@@ -41,6 +41,14 @@ Node.js is a platform that lets you run JavaScript on your computer (instead of 
      ```
    - If you see version numbers, congratulations! Node.js is installed! 🎉
 
+4. **SetExecutionPolicy (Optional)**
+
+   - If you get an error like "execution policy", run this command in Command Prompt:
+     ```bash
+     Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force
+     ```
+   - Type `Y` and press Enter to confirm
+
 ::: tip Having Trouble?
 If you get an error like "node is not recognized", try:
 

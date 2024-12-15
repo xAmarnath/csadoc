@@ -102,11 +102,11 @@ const [newMovie, setNewMovie] = useState({ name: '', year: '', rating: '' });
 
 **Understanding State:**
 
-- `movies`: This is a variable that holds an array (a list) of all the movies in your app. Each item in the array represents a single movie, likely with details like its title, year, and rating.
+- `movies`: An array that stores all our movies
+- `newMovie`: An object that manages the form input values
+- `useState`: A Hook that lets us add state to functional components
 
-- `newMovie`: This variable holds an object (a collection of key-value pairs) that represents the data the user is entering in the form to add a _new_ movie. It's like a temporary holding place for the new movie's title, year, and rating _before_ it's actually saved and added to the `movies` array.
-
-- `useState`: This is a special React function (a Hook) that lets you add state to your components. "State" is data that your component remembers and can change over time. When the state changes, React automatically updates what the user sees on the screen. `useState` is used to manage both the `movies` and `newMovie` variables so that the screen updates whenever the list of movies or the new movie form input changes.
+now for this too
 
 **Why This Approach?**
 
@@ -127,15 +127,11 @@ useEffect(() => {
 
 **Breaking it Down:**
 
-- **`useEffect`:** This is a React Hook that lets you run code _after_ React updates what's displayed on the screen. It's often used for things that interact with the outside world, like fetching data.
-
-- **Empty dependency array `[]`:** When you use `useEffect` with an empty array (`[]`) as the second argument, it tells React to only run the code inside _once_, right after the component first appears on the screen (this is called "mounting").
-
-- **`fetch`:** `fetch` is a JavaScript function that makes HTTP requests to get data from a server (or send data to a server). In this case, it's used to get the list of movies from your backend API.
-
-- **`.then()`:** After `fetch` gets a response from the server, the `.then()` method handles that response. It typically checks if the request was successful and then processes the data. Here, it's likely converting the data to JSON format and updating the component's `movies` state with the new movie data. This update triggers React to re-render the component and display the movies.
-
-- **`.catch()`:** If there's an error during the `fetch` process (like a network problem or a server error), the `.catch()` method handles the error. This lets you display an error message to the user or take other appropriate actions. It prevents your app from crashing.
+- `useEffect`: Runs after component renders
+- Empty dependency array `[]`: Runs only once when component mounts
+- `fetch`: Makes HTTP request to get movies
+- `.then()`: Handles the response and updates state
+- `.catch()`: Handles any errors that occur
 
 **Best Practices Applied:**
 
