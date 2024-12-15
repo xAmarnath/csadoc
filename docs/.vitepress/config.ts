@@ -8,10 +8,10 @@ export default defineConfig({
 
   themeConfig: {
     nav: [
-      { text: 'Setup Node', link: '/setup' },
       { text: 'ExpressJS', link: '/express' },
       { text: 'MongoDB', link: '/mongo' },
       { text: 'Vercel', link: '/vercel' },
+      { text: 'Setup Node', link: '/setup' },
 
       // {
       //   text: 'Dropdown Menu',
@@ -29,10 +29,10 @@ export default defineConfig({
       {
         // text: 'Guide',
         items: [
-          { text: 'Setup Node', link: '/setup.html' },
           { text: 'ExpressJS', link: '/express.html' },
           { text: 'MongoDB', link: '/mongo.html' },
           { text: 'Vercel', link: '/vercel.html' },
+          { text: 'Setup Node', link: '/setup.html' },
           // ...
         ],
       },
