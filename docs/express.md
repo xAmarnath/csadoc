@@ -78,7 +78,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 8081;
 ```
 
 **What's happening here?**
@@ -130,7 +130,7 @@ MongoClient.connect(MONGO_URI)
 #### Add Movie (POST /movies)
 
 ```javascript
-app.post('/movies', async (req, res) => {
+app.post('/api/movies', async (req, res) => {
     try {
         const { name, year, rating } = req.body; // Get movie data from the request
         if (!name || !year || !rating) { // Check if all required fields are present
@@ -155,7 +155,7 @@ app.post('/movies', async (req, res) => {
 #### Delete Movie (POST /delete)
 
 ```javascript
-app.post('/delete', async (req, res) => {
+app.post('/api/delete', async (req, res) => {
     try {
         const { id } = req.body; // Get the movie ID to delete
         const result = await db.collection('movies').deleteOne({ _id: new ObjectId(id) }); // Delete the movie
@@ -175,7 +175,7 @@ app.post('/delete', async (req, res) => {
 #### Get Movies (GET /movies/stream)
 
 ```javascript
-app.get('/movies/stream', async (req, res) => {
+app.get('/api/movies/stream', async (req, res) => {
     try {
         const movies = await db.collection('movies').find().toArray();  // Retrieve all movies from the database
         res.json(movies); // Send the movies as a JSON response
@@ -261,7 +261,7 @@ Use tools like Postman or curl to test endpoints:
 1. **Add Movie**:
 
 ```bash
-curl -X POST http://localhost:3000/movies \
+curl -X POST http://localhost:8081/api/movies \
   -H "Content-Type: application/json" \
   -d '{"name":"Inception","year":"2010","rating":"9.0"}'
 ```
@@ -269,13 +269,13 @@ curl -X POST http://localhost:3000/movies \
 2. **Get Movies**:
 
 ```bash
-curl http://localhost:3000/movies/stream
+curl http://localhost:8081/api/movies/stream
 ```
 
 3. **Delete Movie**:
 
 ```bash
-curl -X POST http://localhost:3000/delete \
+curl -X POST http://localhost:8081/api/delete \
   -H "Content-Type: application/json" \
   -d '{"id":"YOUR_MOVIE_ID"}'
 ```
@@ -338,7 +338,7 @@ const cors = require('cors');
 
 // Initialize the Express app
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 8081;
 // https://www.mongodb.com/cloud/atlas, Create a free account and create a cluster and get the connection string
 const MONGO_URI = 'YOUR_MONGODB_URI_PASTE_HERE'; // Replace with your MongoDB URI
 const DB_NAME = 'moviesdb';
@@ -363,7 +363,7 @@ MongoClient.connect(MONGO_URI)
 
 // Endpoint to insert a movie
 // This endpoint handles POST requests to add a new movie to the database
-app.post('/movies', async (req, res) => {
+app.post('/api/movies', async (req, res) => {
     try {
         // Extract movie details from the request body
         const { name, year, rating } = req.body;
@@ -387,7 +387,7 @@ app.post('/movies', async (req, res) => {
     }
 });
 
-app.post('/delete', async (req, res) => {
+app.post('/api/delete', async (req, res) => {
     try {
         // Delete the specified movie from the "movies" collection
         const { id } = req.body;
@@ -402,7 +402,7 @@ app.post('/delete', async (req, res) => {
 })
 
 // Retrieve all movies from the database
-app.get('/movies/stream', async (req, res) => {
+app.get('/api/movies/stream', async (req, res) => {
     try {
         // Retrieve all movies from the "movies" collection
         const movies = await db.collection('movies').find().toArray();

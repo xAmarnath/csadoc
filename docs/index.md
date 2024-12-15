@@ -118,7 +118,7 @@ now for this too
 
 ```jsx
 useEffect(() => {
-  fetch('http://localhost:3000/movies/stream')
+  fetch('/api/movies/stream')
     .then((response) => response.json())
     .then((data) => setMovies(data))
     .catch((err) => console.error('Error fetching movies:', err));
@@ -166,7 +166,7 @@ const handleInputChange = (e) => {
 const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    const response = await fetch('http://localhost:3000/movies', {
+    const response = await fetch('/api/movies', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newMovie),
@@ -204,7 +204,7 @@ const handleSubmit = async (e) => {
 ```jsx
 const handleDelete = async (id) => {
   try {
-    const response = await fetch('http://localhost:3000/delete', {
+    const response = await fetch('/api/delete', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id }),
@@ -485,7 +485,7 @@ function App() {
 
   // Fetch movies via fetch API
   useEffect(() => {
-    fetch('http://localhost:3000/movies/stream')
+    fetch('/api/movies/stream')
       .then((response) => response.json())
       .then((data) => setMovies(data))
       .catch((err) => console.error('Error fetching movies:', err));
@@ -501,7 +501,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/movies', {
+      const response = await fetch('/api/movies', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -525,7 +525,7 @@ function App() {
   // Delete a movie
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/delete`, {
+      const response = await fetch(`/api/delete`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
