@@ -2,7 +2,7 @@
 title: React.JS - Movie App Tutorial
 ---
 
-# Movie App Tutorial: CSA
+# Movie App Tutorial
 
 Welcome to this comprehensive guide on React best practices! We'll examine a Movie App implementation that demonstrates key React concepts and coding patterns. While we're keeping all code in a single file for learning purposes, we'll discuss important concepts and best practices along the way.
 
@@ -18,6 +18,10 @@ React is a JavaScript library for building user interfaces, particularly single-
 4. **Rich Ecosystem**
 
 ## Overview
+
+### Project URL
+
+https://github.com/xamarnath/react
 
 Our Movie App is a single-page application that allows users to:
 
